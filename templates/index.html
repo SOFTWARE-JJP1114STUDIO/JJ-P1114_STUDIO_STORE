@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-T4gt6WHEGkqqv9IoH7zRMsZ1DlWh1BAKQfK1xG57X06U1tQ4VPwtd5UtkRz7L94"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_global.css') }}">
+    <title>JJ-P1114 STUDIO STORE</title>
+</head>
+<body>
+    <header class="bg-primary text-white text-center py-3">
+        <h1>Bienvenue sur JJ-P1114 STUDIO STORE</h1>
+    </header>
+
+    <nav class="navbar navbar-expand navbar-light bg-light">
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li>
+                    <a class="nav-link" href="">Accueil</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="contact">Contact</a>
+                </li>
+                {% if user_id %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="account">Mon Compte</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('logout') }}">Déconnexion</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('login') }}">Connexion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('register') }}">Inscription</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <section id="featured-products" class="container my-4">
+        <h2 class="text-center">Produits en Vedette</h2>
+        <div class="row">
+            {% for product in products %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="{{ url_for('static', filename='images/' + product['image']) }}" alt="{{ product['name'] }}"
+                             class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product['name'] }}</h5>
+                            <p class="card-text">{{ product['description'] }}</p>
+                            <p class="card-text">Prix: ${{ product['price'] }}</p>
+                            <button class="btn btn-primary">Ajouter au Panier</button>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section id="special-offers" class="bg-light py-4">
+        <div class="container">
+            <h2 class="text-center">Offres Spéciales</h2>
+            <div class="row">
+                {% for offer in special_offers %}
+                    <div class="col-md-6">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ offer['title'] }}</h5>
+                                <p class="card-text">{{ offer['description'] }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; {{ current_year }} JJ-P1114 STUDIO STORE</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+            integrity="sha384-hVRDpY/oAyy3dNwKfXto+I5NE3/0p0KKchEAg3CUuCmHzq3VQTOBrL6uyIq3FkcQ"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyH8f+cRmL8M1lq5R5D8lGVMfnpaN8eIex"
+            crossorigin="anonymous"></script>
+</body>
+</html>

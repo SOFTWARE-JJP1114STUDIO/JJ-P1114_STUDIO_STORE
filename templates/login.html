@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_login_register.css') }}">
+    <title>Connexion - JJ-P1114 STUDIO STORE</title>
+</head>
+<body>
+    <header>
+        <h1>Connexion sur JJ-P1114 STUDIO STORE</h1>
+    </header>
+
+    <section id="login-form">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div id="flash-messages">
+                    {% for message in messages %}
+                        <div class="flash-message {{ message.category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <form action="/login" method="post">
+            <label for="username">Nom d'utilisateur:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Mot de passe:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="remember">Rester connecté:</label>
+            <input type="checkbox" id="remember" name="remember">
+            
+            <button type="submit">Se Connecter</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 JJ-P1114 STUDIO STORE</p>
+    </footer>
+</body>
+</html>

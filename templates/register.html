@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_login_register.css') }}">
+    <title>Inscription - JJ-P1114 STUDIO STORE</title>
+</head>
+<body>
+    <header>
+        <h1>Inscription sur JJ-P1114 STUDIO STORE</h1>
+    </header>
+
+    <section id="register-form">
+        <form action="/register" method="post">
+            <label for="username">Nom d'utilisateur:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Mot de passe:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="email">Adresse email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <button type="submit">S'inscrire</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 JJ-P1114 STUDIO STORE</p>
+    </footer>
+</body>
+</html>

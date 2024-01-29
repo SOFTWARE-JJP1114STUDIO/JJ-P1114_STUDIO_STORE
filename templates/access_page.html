@@ -1,0 +1,28 @@
+<!-- access_page.html -->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_access_page.css') }}">
+    <title>{{ page_title }}</title>
+</head>
+<body>
+    <header>
+        <h1>{{ page_title }}</h1>
+    </header>
+
+    <section class="access-form">
+        <form method="post">
+            <label for="access_code">Code d'accès :</label>
+            <input type="password" id="access_code" name="access_code" required>
+            <button type="submit">Accéder</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 JJ-P1114 STUDIO STORE</p>
+    </footer>
+</body>
+</html>
